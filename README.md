@@ -11,6 +11,9 @@
 - Pythonanywhere
 
 ---
+Superuser:
+LOGIN - admin
+PASSWORD - admin
 
 API эндпоинты:
 
