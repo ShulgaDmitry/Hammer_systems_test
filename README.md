@@ -59,8 +59,9 @@ Response 200:
 GET /users/
 Описание: Получить список всех пользователей
 Response 200:
+
 [
-    {
+  {
         "id": 1,
         "phone": "",
         "invite_code": "K0AttI"
