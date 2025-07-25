@@ -71,7 +71,7 @@ python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
-# Настрой DATABASES в settings.py под свой PostgreSQL
+Настрой DATABASES в settings.py под свой PostgreSQL
 
 python manage.py makemigrations
 python manage.py migrate
