@@ -1,7 +1,7 @@
 Описание
 
 Система авторизации по номеру телефона с выдачей и проверкой 4-значного кода. Пользователь может активировать только **1 код одновременно**. После подтверждения кода пользователь считается авторизованным.
-
+---
 Стек
 
 - Python 3.12
@@ -9,7 +9,6 @@
 - Django REST Framework
 - PostgreSQL (Реализовано локально, в Pythonanywhere использовался SQLite т.к. PostgreSQL доступен только в платной версии)
 - Pythonanywhere
-
 ---
 Superuser:
 LOGIN - admin
@@ -18,59 +17,47 @@ PASSWORD - admin
 API эндпоинты:
 
 Отправка кода на телефон
-POST /api/auth/phone/
+POST /send_code/
 Описание: Отправка 4-значного кода на номер телефона
 Request Body:
 {
-  "phone": "+375291234567"
+  "phone": "+375291234567",
 }
 Response 200:
 {
-  "message": "Код отправлен на номер +375291234567"
+    "message": "Code sent",
+    "code": "3725"
 }
 
-Подтверждение кода
-POST /api/auth/verify/
-Описание: Верификация кода, выдача токена при успехе
+Верефикация 
+GET /verify/
+Описание: Верефикация пользователя и отправка инвайт-кода (необязательное поле)
 Request Body:
 {
-  "phone": "+375291234567",
-  "code": "1234"
+  "phone": "+375291234550",
+  "code": "3725",
+  "invite_code": "0SOO6q"
 }
 Response 200:
 {
-  "token": "f86829d58d1b56e6b8f739a59c60b4b173e23b58"
-}
-
-Получение профиля
-GET /api/profile/
-Описание: Получить данные авторизованного пользователя
-Headers:
-Authorization: Token <token>
-Response 200:
-{
-  "id": 1,
-  "username": "+375291234567",
-  "phone": "+375291234567"
+    "message": "User verified"
 }
 
 Список всех пользователей
-GET /api/users/
+GET /users/
 Описание: Получить список всех пользователей
-Headers:
-Authorization: Token <token>
 Response 200:
 [
-  {
-    "id": 1,
-    "username": "+375291234567",
-    "phone": "+375291234567"
-  },
-  {
-    "id": 2,
-    "username": "+375293334455",
-    "phone": "+375293334455"
-  }
+    {
+        "id": 1,
+        "phone": "",
+        "invite_code": "K0AttI"
+    },
+    {
+        "id": 2,
+        "phone": "+375291234567",
+        "invite_code": "0SOO6q"
+    }
 ]
 
 ---
@@ -91,4 +78,4 @@ python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
 
-Разработчик: Шульга Дмитрий
+# Разработчик: Шульга Дмитрий
