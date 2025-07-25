@@ -26,24 +26,24 @@ API эндпоинты:
 POST /send_code/
 Описание: Отправка 4-значного кода на номер телефона
 Request Body:
-{
-  "phone": "+375291234567",
-}
+-{
+-  "phone": "+375291234567",
+-}
 Response 200:
-{
-    "message": "Code sent",
-    "code": "3725"
-}
+-{
+-    "message": "Code sent",
+-    "code": "3725"
+-}
 
 Верефикация 
 GET /verify/
 Описание: Верефикация пользователя и отправка инвайт-кода (необязательное поле)
 Request Body:
-{
-  "phone": "+375291234550",
-  "code": "3725",
-  "invite_code": "0SOO6q"
-}
+-{
+-  "phone": "+375291234550",
+-  "code": "3725",
+-  "invite_code": "0SOO6q"
+-}
 Response 200:
 {
     "message": "User verified"
@@ -53,18 +53,18 @@ Response 200:
 GET /users/
 Описание: Получить список всех пользователей
 Response 200:
-[
-    {
-        "id": 1,
-        "phone": "",
-        "invite_code": "K0AttI"
-    },
-    {
-        "id": 2,
-        "phone": "+375291234567",
-        "invite_code": "0SOO6q"
-    }
-]
+-[
+-    {
+-        "id": 1,
+-        "phone": "",
+-        "invite_code": "K0AttI"
+-    },
+-    {
+-        "id": 2,
+-        "phone": "+375291234567",
+-        "invite_code": "0SOO6q"
+-    }
+-]
 
 ---
 
